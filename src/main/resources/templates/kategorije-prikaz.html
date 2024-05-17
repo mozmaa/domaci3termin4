@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link active" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/kategorije">Prikaz svih</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 mx-auto">
+				<form action="/kategorije/izmena" method="post">
+					<input type="hidden" name="id" th:value="${kategorija.id}">
+					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Naziv</label>
+						<div class="col-10">
+							<input type="text" class="form-control" name="naziv" th:value="${kategorija.naziv}">
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<button type="submit" class="btn btn-primary w-100">Izmeni</button>
+						</div>
+					</div>
+  				</form>
+  				<form action="/kategorije/brisanje" method="post">
+					<input type="hidden" name="id" th:value="${kategorija.id}">
+  					<div class="row my-2">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<button type="submit" class="btn btn-primary w-100">Obrisi</button>
+						</div>
+					</div>
+  				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

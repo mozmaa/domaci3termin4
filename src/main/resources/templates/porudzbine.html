@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link active" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/porudzbine/dodavanje/selectRestoran">Dodaj</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Redni broj</th>
+							<th>Datum</th>
+							<th>Korisnik</th>
+							<th>Restoran</th>
+							<th>Artikli</th>
+							<th>Cena dostave</th>
+							<th>Adresa dostave</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+						<tr th:each="itPorudzbina, status : ${porudzbine} ">
+							<td th:text="${status.count}"></td>
+							<td> <a th:href="|porudzbine/prikaz?id=${itPorudzbina.id}|" th:text="${#temporals.format(itPorudzbina.datumIVreme, 'dd.MM.yyyy. HH:mm')}"></a></td>
+							<td><a th:href="|/korisnici/prikaz?korisnickoIme=${itPorudzbina.korisnik.korisnickoIme}|" th:text="${itPorudzbina.korisnik.korisnickoIme}"></a></td>
+							<td><a th:href="|/restorani/prikaz?id=${itPorudzbina.restoran.id}|" th:text="${itPorudzbina.restoran.naziv}"></a></td>
+							<td>
+								<ul th:each="itStavka : ${itPorudzbina.stavkePorudzbine}">
+									<li th:text="${itStavka.prikaz}"></li>
+								</ul>
+							</td>
+							<td class="text-end"; th:text="|${itPorudzbina.restoran.cenaDostave} RSD|"></td>
+							<td th:text="${itPorudzbina.korisnik.adresa.adresaBezPostanskog}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

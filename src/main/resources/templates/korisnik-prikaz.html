@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link  active" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="/korisnici">Prikaz svih</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 mx-auto">
+				<table class="table table-striped">
+					<tr>
+						<th>Korisnicko ime</th>
+						<td th:text="${korisnik.korisnickoIme}"></td>
+					</tr>
+					<tr>
+						<th>eMail</th>
+						<td th:text="${korisnik.eMail}"></td>
+					</tr>
+					<tr>
+						<th>Pol</th>
+						<td th:text="${korisnik.pol}"></td>
+					</tr>
+					<tr>
+						<th>Administrator</th>
+						<td th:text="${korisnik.administrator}? 'da' : 'ne'"></td>
+					</tr>
+					<tr>
+						<th>Adresa</th>
+						<td th:text="${korisnik.adresa.adresaSaPostanskim}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

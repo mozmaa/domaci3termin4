@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link active" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/korisnici/dodavanje">Dodaj</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Redni broj</th>
+							<th>Korisnicko ime</th>
+							<th>eMail</th>
+							<th>Pol</th>
+							<th>Aministrator</th>
+							<th>Adresa</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+						<tr th:each="itKorisnik, status : ${korisnici}">
+							<td th:text="${status.count}"></td>
+							<td><a th:href="|/korisnici/prikaz?korisnickoIme=${itKorisnik.korisnickoIme}|" th:text="${itKorisnik.korisnickoIme}"></a></td>
+							<td th:text="${itKorisnik.eMail}"></td>
+							<td th:text="${itKorisnik.pol}"></td>
+							<td th:text="${itKorisnik.administrator}? 'da' : 'ne'"></td>
+							<td th:text="${itKorisnik.adresa.adresaSaPostanskim}"></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

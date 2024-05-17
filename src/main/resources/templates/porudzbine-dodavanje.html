@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link active" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/porudzbine">Prikaz svih</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 mx-auto">
+				<form action="/porudzbine/dodavanje" method="post">
+					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Korisnici</label>
+						<div class="col-10" >
+							<div th:each="itKorisnik : ${korisnici}">
+								<input   type="radio" required class="form-check-input" name="korisnickoIme" th:value="${itKorisnik.korisnickoIme}">
+								<label   class="form-check-label" th:text="${itKorisnik.korisnickoIme}"></label><br>
+							</div>
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Napomena</label>
+						<div class="col-10">
+							<textarea class="col-12" name="napomena" placeholder="Napomena..."></textarea>
+							<input type="hidden" name="restoranId" th:value="${restoran.id}">
+    					</div>
+  					</div>
+  					<div class="row my-2 ">
+						<label class="col-2 col-form-label text-end">Stavke</label>
+						<div class="d-flex col-10">
+  							<table class="col-10">
+								<thead>
+						  			<th>Artikli</th>
+						  			<th>Kolicina</th>
+						  		</thead>
+						  		<tbody>
+									<tr th:each="itArtikal : ${restoran.artikli}">
+										<td th:text="${itArtikal.naziv}"></td>
+										<td>
+											<input type="hidden" name="artikalId" th:value="${itArtikal.id}">
+											<input type="number" name="artikalKolicina" th:value="0" >
+										</td>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row my-2">
+						<div class="col-10">
+							<button type="submit" class="btn btn-primary w-100">Poruci</button>
+						</div>
+					</div>
+  				</form>
+			</div>
+		</div>
+	</div>
+</body>

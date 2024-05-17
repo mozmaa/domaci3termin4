@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link active" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/restorani">Prikaz svih</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 mx-auto">
+				<form action="/korisnici/dodavanje" method="post">
+					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Korisnicko ime</label>
+						<div class="col-10">
+							<input type="text" required class="form-control" name="korisnickoIme" autofocus >
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Lozinka</label>
+						<div class="col-10">
+							<input type="password" required class="form-control" name="lozinka" autofocus >
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">E-mail</label>
+						<div class="col-10">
+							<input type="email" required class="form-control" name="eMail" autofocus >
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Pol</label>
+						<div class="col-10" >
+							<div class="form-check form-check-inline">
+								<input   type="radio" class="form-check-input" name="pol" value="Muski" checked>
+								<label   class="form-check-label" >Muski</label><br>
+							</div>
+							<div class="form-check form-check-inline">
+								<input   type="radio" class="form-check-input" name="pol" value="Zenski">
+								<label   class="form-check-label" >Zenski</label><br>
+							</div>
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Administrator</label>
+						<div class="col-10">
+							<input type="checkbox" class="form-check-input"  name="administrator"  >
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Ulica</label>
+						<div class="col-10">
+							<input type="text" required class="form-control" name="nazivUlice">
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Broj</label>
+						<div class="col-10">
+							<input type="text" required class="form-control" name="broj">
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Grad</label>
+						<div class="col-10">
+							<input type="text" required class="form-control" name="grad">
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<label class="col-2 col-form-label text-end">Postanski broj</label>
+						<div class="col-10">
+							<input type="text" required pattern="[0-9]{5}" placeholder="" class="form-control" name="postanskiBroj">
+    					</div>
+  					</div>
+  					<div class="row my-2">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<button type="submit" class="btn btn-primary w-100">Dodaj</button>
+						</div>
+					</div>
+  				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

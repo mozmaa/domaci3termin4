@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link active" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/artikli/dodavanje">Dodaj</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Redni broj</th>
+							<th>Naziv</th>
+							<th>Opis</th>
+							<th>Cena</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+						<tr th:each="itArtikal, status : ${artikli}">
+							<td th:text="${status.count}"></td>
+							<td><a th:href="|/artikli/prikaz?id=${itArtikal.id}|" th:text="${itArtikal.naziv}"></a></td>
+							<td th:text="${itArtikal.opis}"></td>
+							<td th:text="|${itArtikal.cena} RSD|"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

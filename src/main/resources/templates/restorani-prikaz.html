@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<title>Dostava</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a class="navbar-brand" href="https://enastava.ftninformatika.com">
+						<img src="/images/logo.svg" />
+					</a>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/index.html">Početna</a>
+						<a class="nav-item nav-link active" href="/restorani">Restorani</a>
+						<a class="nav-item nav-link" href="/artikli">Artikli</a>
+						<a class="nav-item nav-link" href="/porudzbine">Porudzbine</a>
+						<a class="nav-item nav-link" href="/kategorije">Kategorije</a>
+						<a class="nav-item nav-link" href="/korisnici">Korisnici</a>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand navbar-dark bg-secondary">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="/restorani">Prikaz svih</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 mx-auto">
+				<table class="table table-striped">
+					<tr>
+						<th>Naziv</th>
+						<td th:text="${restoran.naziv}"></td>
+					</tr>
+					<tr>
+						<th>Kategorije</th>
+						<td>
+							<ul th:each="itKategorija : ${restoran.kategorije}">
+								<li th:text="${itKategorija.naziv}"></li>
+							</ul>
+						</td>	
+					</tr>
+					<tr>
+						<th>Artikli</th>
+						<td>
+							<ul th:each="itArtikal, status : ${restoran.artikli}">
+								<li th:text="${itArtikal.naziv}" ></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Cena Dostave</th>
+						<td th:text="|${restoran.cenaDostave} RSD|"></td>
+					</tr>
+					<tr>
+						<th>Adresa</th>
+						<td th:text="${restoran.adresa.adresaSaPostanskim}"></td>
+					</tr>
+					
+				</table>
+				<form action="/restorani/restorani-izmena" method="post">
+				<div class="col-10">
+					<input type="hidden" name="restoranId" th:value="${restoran.id}">
+    			</div>
+				<div class="row my-2">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<button type="submit" class="btn btn-primary w-100">Izmeni</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
